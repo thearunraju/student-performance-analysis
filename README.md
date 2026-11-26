@@ -1,97 +1,32 @@
-# 📊 Dimensionality Reduction and Predictive Modeling: Student Success Factors
+# Student Performance Analysis: EDA, Hypothesis Testing and PCA
 
-This project explores how academic and lifestyle factors influence **student performance (CGPA)** using **Exploratory Data Analysis (EDA)**, **statistical tests**, and **linear algebra techniques** like **Principal Component Analysis (PCA)** and **Linear Regression**.
+Exploratory and statistical analysis of factors that might affect student CGPA, using a 100-student dataset.
 
----
+**Dataset:** `Student_Performance.csv` (100 rows, 10 columns). Source: <add where you got it>.
+Columns: age, study hours per week, sleep hours, CGPA, stress level (1-5), attendance %, social media hours, part-time job, gender.
 
-## 📌 Project Overview
+## What I did
+1. **Cleaning:** checked for duplicates (none found) and filled 5 missing values each in CGPA, sleep hours and study hours with the median.
+2. **EDA:** CGPA distribution, attendance vs CGPA, CGPA by stress level, study hours vs CGPA.
+3. **Hypothesis tests:**
+   - Independent t-test, CGPA by part-time job status: p = 0.91
+   - One-way ANOVA, CGPA across stress levels: p = <new value>
+4. **PCA** on 7 standardised numeric features: 5 components retain about 81% of variance, and variance is spread fairly evenly across components.
+5. **Linear regression** of CGPA on study hours: slope is essentially zero.
 
-The dataset contains student details such as:
+## Findings
+- No statistically significant difference in CGPA by part-time job status or stress level.
+- Study hours have no meaningful linear relationship with CGPA.
+- PCA shows no dominant component, so the features are largely independent of each other.
+- Attendance vs CGPA looks loosely positive on the scatter plot, but I did not test it.
 
-* Age
-* Study hours per week
-* Sleep hours
-* CGPA
-* Stress level
-* Attendance percentage
-* Social media usage
-* Part-time job & gender
+## Limitations
+- Only 100 rows, so tests have low power.
+- Small effects could exist and not show up at this sample size.
+- CGPA was included among the PCA features, so PCA describes the feature set, not what drives CGPA.
 
-The main objective is to understand **what factors impact CGPA** and how statistical & linear algebra methods can reveal patterns.
+## Tech stack
+Python, pandas, NumPy, SciPy, scikit-learn, Matplotlib, Seaborn
 
----
-
-## 🎯 Objectives
-
-* Preprocess the dataset (handle missing values, duplicates).
-* Perform **EDA** to study distributions & relationships.
-* Apply **T-test & ANOVA** to test hypotheses.
-* Use **PCA** for dimensionality reduction and variance analysis.
-* Apply **Linear Regression** to explore predictive relationships.
-
----
-
-## 🛠️ Methodology
-
-1. **Data Preprocessing:**
-
-   * Handled missing values with median imputation.
-   * Removed duplicates and cleaned dataset.
-
-2. **Exploratory Data Analysis (EDA):**
-
-   * Visualized CGPA distribution, attendance vs CGPA, stress levels, and study hours.
-   * Identified correlations and patterns.
-
-3. **Statistical Tests:**
-
-   * T-test → Checked CGPA differences between students with/without part-time jobs.
-   * ANOVA → Compared CGPA across different stress levels.
-
-4. **Principal Component Analysis (PCA):**
-
-   * Standardized features.
-   * Reduced dataset dimensions while retaining ~81% of variance in top 5 components.
-
-5. **Linear Regression:**
-
-   * Explored relationship between study hours and CGPA.
-   * Found negligible linear correlation, suggesting other factors matter more.
-
----
-
-## 📈 Key Findings
-
-* **Attendance** has some positive association with CGPA.
-* **Stress levels** show weak but noticeable influence (low stress → slightly higher CGPA).
-* **Study hours alone** are not a strong predictor of CGPA.
-* **PCA** revealed that multiple factors together explain performance, not just one variable.
-
----
-
-## 💡 Conclusion
-
-Student performance is shaped by a **complex combination** of study habits, stress, sleep, attendance, and lifestyle factors. Linear Algebra methods like PCA help uncover these hidden relationships, while regression and statistical tests validate them.
-
----
-
-## 🚀 Tech Stack
-
-* Python 🐍
-* Pandas, NumPy
-* Matplotlib, Seaborn
-* Scipy (stats)
-* Scikit-learn (PCA, Linear Regression)
-
----
-
-## 📂 Files in Repo
-
-* `Project.ipynb` → Main notebook with code & analysis
-* `Project Report.pdf` → Detailed explanation, methodology & results
-
----
-
-## 🙏 Contributions
-
-Suggestions and improvements are welcome! If you’ve worked on similar analyses, feel free to share your insights.
+## Files
+- `student_performance_analysis.ipynb`: code and analysis
